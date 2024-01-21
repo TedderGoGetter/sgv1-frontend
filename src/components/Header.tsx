@@ -1,6 +1,13 @@
 import './header.scss'
+import { useState } from 'react'
 
 const Header = () => {
+
+    const [loggedIn, setLoggedIn] = useState()
+
+
+
+
     return (  
     <div className='header'>
         <div className ='header-container'>
@@ -10,7 +17,6 @@ const Header = () => {
             <div className='header-links'>
                 <a className='header-link'>Browse</a>
                 <a className='header-link'>Sign In</a>
-                <a className='header-link'>Sign Out</a>
             </div>
 
         </div>

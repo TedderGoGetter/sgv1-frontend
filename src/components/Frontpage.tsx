@@ -1,15 +1,11 @@
-import { useState } from 'react'
 import SearchBar from './SearchBar'
+import Signin from './Signin'
+import Browse from './browse'
 import './frontpage.scss'
+
 
 export const Frontpage = () => {
 
-  const [userName, setUserName] = useState('')
-  const [password, setPassword] = useState('')
-
-  const handleSubmit = () => {
-    console.log({userName, password})
-  }
 
   return (
     <div> 
@@ -19,27 +15,11 @@ export const Frontpage = () => {
           <SearchBar/>
         </div>
       </div>
-      <div>
-        <form>
-          <label>Sign In</label>
-          <input 
-            type='text'
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
-            required
-            
-          />
-          <input 
-            type='password' 
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button
-            onClick={() => handleSubmit()}
-          >Submit</button>
-        </form>
-      </div>
+      <br/>
+      <Signin/>
+      <br/>
+      <br/>
+      <Browse/>
     </div>
   )
 }

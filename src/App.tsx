@@ -6,13 +6,13 @@ import { Frontpage } from './components/Frontpage'
 
 function App() {
 
-  useEffect(() => {
-    axios.get('http://localhost:3333/song', {headers: {'Access-Control-Allow-Origin': 'localhost:3333'}}).then(res => {
-      console.log('attempted get')
-      console.log(res.data)
+  // useEffect(() => {
+  //   axios.get('http://localhost:3333/song', {headers: {'Access-Control-Allow-Origin': 'localhost:3333'}}).then(res => {
+  //     console.log('attempted get')
+  //     console.log(res.data)
       
-    })
-  }, [])
+  //   })
+  // }, [])
 
   return (
     <>

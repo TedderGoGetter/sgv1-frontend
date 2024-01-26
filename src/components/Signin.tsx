@@ -11,16 +11,22 @@ export default function Signin() {
   
     const handleSubmit = (e: any) => {
         e.preventDefault()
-      axios
-        .post('auth/signin', {
-          email: "teddy@mail.com",
-          password: "123",
-        })
-        .then((res: any) => {
-          setResponse(res.data)
-          if (res.data) console.log(res.data)
 
-        });
+        try{
+          axios
+          .post('auth/signin', {
+            email: "teddy@mail.com",
+            password: "123",
+          })
+          .then((res: any) => {
+            setResponse(res.data)
+            if (res.data) console.log(res.data)
+  
+          })
+        } catch (err) {
+          console.log(err)
+        }
+
 
 
     }

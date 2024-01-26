@@ -1,7 +1,8 @@
 import SearchBar from './SearchBar'
 import Signin from './Signin'
-import Browse from './browse'
+import Browse from './Browse'
 import './frontpage.scss'
+import Signup from './Signup'
 
 
 export const Frontpage = () => {
@@ -20,6 +21,9 @@ export const Frontpage = () => {
       <br/>
       <br/>
       <Browse/>
+      <br/>
+      <br/>
+      <Signup/>
     </div>
   )
 }

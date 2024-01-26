@@ -1,34 +1,34 @@
 import './signin.scss'
 import axios from '../api/axios'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import AuthContext from '../context/AuthProvider'
 
 export default function Signin() {
 
-
+    const { setAuth } = useContext(AuthContext)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [response, setResponse] = useState()
   
-    const handleSubmit = (e: any) => {
+    const handleSubmit = async (e: any) => {
         e.preventDefault()
+        JSON.stringify({email, password})
 
         try{
           axios
           .post('auth/signin', {
-            email: "teddy@mail.com",
-            password: "123",
+            email: email,
+            password: password,
           })
           .then((res: any) => {
-            setResponse(res.data)
+            // setResponse(res.data)
             if (res.data) console.log(res.data)
-  
+            const accessToken = res?.data?.access_token
+          setAuth({email, password, accessToken})
           })
         } catch (err) {
           console.log(err)
         }
-
-
-
     }
   
   return (

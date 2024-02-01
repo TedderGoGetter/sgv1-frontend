@@ -5,7 +5,7 @@ import AuthContext from '../context/AuthProvider'
 
 export default function Signin() {
 
-    const { setAuth } = useContext(AuthContext)
+    const setAuth  = useContext(AuthContext)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [response, setResponse] = useState()

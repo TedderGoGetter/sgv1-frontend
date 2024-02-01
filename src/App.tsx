@@ -2,7 +2,22 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import './app.scss'
 import Header from './components/Header'
-import { Frontpage } from './components/Frontpage'
+import { Frontpage } from './pages/Frontpage'
+import { createBrowserRouter, Route, NavLink, createRoutesFromElements, RouterProvider } from 'react-router-dom'
+import About from './pages/About'
+import RootLayout from './layouts/RootLayout'
+import Browse from './pages/Browse'
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<RootLayout/>}>
+      <Route index element={<Frontpage/>}/>
+      <Route path="browse" element={<Browse/>}/>
+      <Route path="about" element={<About/>}/>
+
+    </Route>
+  )
+)
 
 function App() {
 
@@ -15,11 +30,7 @@ function App() {
   // }, [])
 
   return (
-    <>
-    <Header/>
-    <Frontpage/>
-    
-    </>
+      <RouterProvider router={router}/>
   )
 }
 

@@ -1,12 +1,11 @@
-import SearchBar from './SearchBar'
-import Signin from './Signin'
-import Browse from './Browse'
+import SearchBar from '../components/SearchBar'
+import Signin from '../components/Signin'
 import './frontpage.scss'
-import Signup from './Signup'
-
+import Signup from '../components/Signup'
+import AuthContext from '../context/AuthProvider'
+import { useContext } from 'react'
 
 export const Frontpage = () => {
-
 
   return (
     <div> 
@@ -18,9 +17,6 @@ export const Frontpage = () => {
       </div>
       <br/>
       <Signin/>
-      <br/>
-      <br/>
-      <Browse/>
       <br/>
       <br/>
       <Signup/>

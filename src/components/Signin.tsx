@@ -1,35 +1,36 @@
 import './signin.scss'
 import axios from '../api/axios'
-import { useState, useContext } from 'react'
-import AuthContext from '../context/AuthProvider'
+import { useState } from 'react'
+import useAuth from '../hooks/useAuth'
 
 export default function Signin() {
+  const { auth, setAuth } = useAuth()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [response, setResponse] = useState('')
 
-    const setAuth  = useContext(AuthContext)
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [response, setResponse] = useState()
-  
-    const handleSubmit = async (e: any) => {
-        e.preventDefault()
-        JSON.stringify({email, password})
+  const handleSubmit = async (e: any) => {
+      e.preventDefault()
+      JSON.stringify({email, password})
 
-        try{
-          axios
-          .post('auth/signin', {
-            email: email,
-            password: password,
-          })
-          .then((res: any) => {
-            // setResponse(res.data)
-            if (res.data) console.log(res.data)
-            const accessToken = res?.data?.access_token
+      try{
+        await axios
+        .post('auth/signin', {
+          email: email,
+          password: password,
+        })
+        .then((res: any) => {
+          // setResponse(res.data)
+          if (res.data) console.log(res.data)
+          const accessToken = res?.data?.access_token
           setAuth({email, password, accessToken})
-          })
-        } catch (err) {
-          console.log(err)
-        }
-    }
+          console.log("auth equals")
+          console.log(auth)
+        })
+      } catch (err) {
+        console.log(err)
+      }
+  }
   
   return (
     <div>

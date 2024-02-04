@@ -35,15 +35,15 @@ const Signup = () => {
 
     useEffect(() => {
         const result = EMAIL_REGEX.test(email)
-        console.log(result)
-        console.log(email)
+        // console.log(result)
+        // console.log(email)
         setValidEmail(result)
     }, [email])
 
     useEffect(() => {
         const result = PWD_REGEX.test(pwd)
-        console.log(result)
-        console.log(pwd)
+        // console.log(result)
+        // console.log(pwd)
         setValidPwd(result)
         const match = pwd === matchPwd
         setValidMatch(match)

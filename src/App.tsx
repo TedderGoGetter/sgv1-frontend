@@ -7,14 +7,16 @@ import { createBrowserRouter, Route, NavLink, createRoutesFromElements, RouterPr
 import About from './pages/About'
 import RootLayout from './layouts/RootLayout'
 import Browse from './pages/Browse'
+import RequireAuth from './components/RequireAuth'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout/>}>
       <Route index element={<Frontpage/>}/>
-      <Route path="browse" element={<Browse/>}/>
+      <Route element={<RequireAuth />} >
+        <Route path="browse" element={<Browse/>}/>
+      </Route>
       <Route path="about" element={<About/>}/>
-
     </Route>
   )
 )

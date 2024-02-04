@@ -2,7 +2,6 @@ import SearchBar from '../components/SearchBar'
 import Signin from '../components/Signin'
 import './frontpage.scss'
 import Signup from '../components/Signup'
-import AuthContext from '../context/AuthProvider'
 import { useContext } from 'react'
 
 export const Frontpage = () => {

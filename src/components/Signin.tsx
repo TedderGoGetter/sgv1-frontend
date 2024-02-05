@@ -16,6 +16,8 @@ export default function Signin() {
       try{
         await axios
         .post('auth/signin', {
+          headers: { 'Content-Type': 'application/json' },
+          withCredentials: true,
           email: email,
           password: password,
         })
@@ -26,6 +28,8 @@ export default function Signin() {
           setAuth({email, password, accessToken})
           console.log("auth equals")
           console.log(auth)
+          console.log("rt is", res?.data?.refresh_token)
+          localStorage.setItem('refreshToken', JSON.stringify(res?.data?.refresh_token))
         })
       } catch (err) {
         console.log(err)

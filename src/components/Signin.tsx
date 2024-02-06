@@ -7,7 +7,6 @@ export default function Signin() {
   const { auth, setAuth } = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [response, setResponse] = useState('')
 
   const handleSubmit = async (e: any) => {
       e.preventDefault()
@@ -22,12 +21,10 @@ export default function Signin() {
           password: password,
         })
         .then((res: any) => {
-          // setResponse(res.data)
           if (res.data) console.log(res.data)
           const accessToken = res?.data?.access_token
           setAuth({email, password, accessToken})
-          console.log("auth equals")
-          console.log(auth)
+          console.log("auth equals", auth)
           console.log("rt is", res?.data?.refresh_token)
           localStorage.setItem('refreshToken', JSON.stringify(res?.data?.refresh_token))
         })

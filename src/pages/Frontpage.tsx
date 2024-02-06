@@ -3,6 +3,7 @@ import Signin from '../components/Signin'
 import './frontpage.scss'
 import Signup from '../components/Signup'
 import { useContext } from 'react'
+import RefreshIt from '../components/RefreshIt'
 
 export const Frontpage = () => {
 
@@ -19,6 +20,8 @@ export const Frontpage = () => {
       <br/>
       <br/>
       <Signup/>
+      <br/>
+      <RefreshIt/>
     </div>
   )
 }

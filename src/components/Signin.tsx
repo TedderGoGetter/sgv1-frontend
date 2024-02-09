@@ -27,7 +27,7 @@ export default function Signin() {
           console.log("auth equals", auth)
           console.log("rt is", res?.data?.refresh_token)
           localStorage.setItem('refreshToken', JSON.stringify(res?.data?.refresh_token))
-        })
+        }) 
       } catch (err) {
         console.log(err)
       }

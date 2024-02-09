@@ -4,8 +4,6 @@ import useAuth from "./useAuth"
 const useRefreshToken = () => {
   const {auth, setAuth} = useAuth()
 
-  
-
   const refresh = async () => {
     const rtString: string = JSON.parse(String(localStorage.getItem('refreshToken')))
 
@@ -17,15 +15,15 @@ const useRefreshToken = () => {
       'Content-Type': 'application/json',
       }
     })
-
-    console.log(response.data.refreshToken)
+    localStorage.setItem('refreshToken', JSON.stringify(response?.data?.refresh_token))
+    
     
     setAuth((prev: any) => {
       console.log(JSON.stringify(prev))
-      console.log(response.data.accessToken)
-      return {...prev, accessToken: response.data.accessToken}
+      console.log(response.data.access_token)
+      return {...prev, accessToken: response.data.access_token}
     })
-    return response.data.accessToken
+    return response.data.access_token
   }
 
   return refresh

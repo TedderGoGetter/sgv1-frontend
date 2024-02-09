@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react"
 import axios from "../api/axios"
-import useRefreshToken from "../hooks/useRefreshToken"
 
 
 const Browse = () => {
     const [songs, setSongs] = useState<any[]>([])
-    const refresh = useRefreshToken()
 
     useEffect(() => {
         let isMounted = true // what is this for? 
@@ -46,7 +44,6 @@ const Browse = () => {
             </ul>
         ) : <p>nothing here</p>
         }
-        <button onClick={() => {refresh()}}>Refresh</button>
     </article>
   ) // Maps out songs in db, adjust for data type. 
 }

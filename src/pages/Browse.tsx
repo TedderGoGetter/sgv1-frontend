@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react"
-import axios from "../api/axios"
+import useAxiosPrivate from "../hooks/useAxiosPrivate"
+import { useNavigate, useLocation } from "react-router-dom"
 
 
 const Browse = () => {
     const [songs, setSongs] = useState<any[]>([])
+    const axiosPrivate = useAxiosPrivate()
+    const navigate = useNavigate()
+    const location = useLocation()
 
     useEffect(() => {
         let isMounted = true // what is this for? 
@@ -11,7 +15,7 @@ const Browse = () => {
 
         const getSongs = async () => {
             try {
-                const res = await axios.get('song', {
+                const res = await axiosPrivate.get('song', {
                     signal: controller.signal
                 })
                 console.log(res.data)
@@ -19,6 +23,7 @@ const Browse = () => {
 
             } catch(err) {
                 console.error(err)
+                // navigate('/login', {state: { from: location }, replace: true}) //sends user to login and back when needed, does not list login in the browser history.
             }
             
         }

@@ -1,10 +1,14 @@
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink} from 'react-router-dom'
 import './header.scss'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useState, useEffect } from 'react';
+import logo from '../assets/img/logo.svg'
+import navIcon1 from '../assets/img/nav-icon1.svg'
+import navIcon2 from '../assets/img/nav-icon2.svg'
+import navIcon3 from '../assets/img/nav-icon3.svg'
 
 const Header = () => {
 
@@ -20,20 +24,28 @@ const Header = () => {
             }
         }
         window.addEventListener("scroll", onScroll)
+
+        return () => window.removeEventListener("scroll", onScroll)
     }, [])
     
+    const onUpdateActiveLink = (value:string) => {
+        setActiveLink(value)
+    }
+
     return (
-    <Navbar expand="lg">
+    <Navbar expand="lg" className={scrolled ? "scrolled": ""}>
         <Container>
-        <Navbar.Brand href="#home">SOUNDGEEK</Navbar.Brand>
+        <Navbar.Brand href="#home">
+            <img src={logo} alt="Logo" />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav">
             <span className="navbar-toggler-icon"></span>
         </Navbar.Toggle>
         <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-            <Nav.Link href="#browse">Browse</Nav.Link>
-            <Nav.Link href="#post">Post</Nav.Link>
-            <Nav.Link href="#login">Login</Nav.Link>
+            <Nav.Link href="#browse" className={ activeLink === 'browse' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('browse')}>Browse</Nav.Link>
+            <Nav.Link href="#post" className={ activeLink === 'post' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('post')}>Post</Nav.Link>
+            <Nav.Link href="#login"className={ activeLink === 'login' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('login')}>Login</Nav.Link>
             {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
@@ -48,9 +60,13 @@ const Header = () => {
             </Nav>
             <span className="navbar-text">
                 <div className="social-icon">
-                    <a href="#"><img src={''} alt="Discord"/></a>
-                    <a href="#"><img src={''} alt="Instagram"/></a>
+                    <a href="#"><img src={navIcon1} alt=""/></a>
+                    <a href="#"><img src={navIcon2} alt=""/></a>
+                    <a href="#"><img src={navIcon3} alt=""/></a>
+                    {/* <a href="#"><img src={''} alt="Discord"/></a>
+                    <a href="#"><img src={''} alt="Instagram"/></a> */}
                 </div>
+                <button className="vvd"><span>Let’s Connect</span></button>
             </span>
         </Navbar.Collapse>
         </Container>

@@ -8,15 +8,17 @@ import About from './pages/About'
 import RootLayout from './layouts/RootLayout'
 import Browse from './pages/Browse'
 import RequireAuth from './components/RequireAuth'
+import { Banner } from './components/Banner'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout/>}>
-      <Route index element={<Frontpage/>}/>
+        <Route index element={<Banner/>}/>
+      {/* <Route index element={<Frontpage/>}/>
       <Route element={<RequireAuth />} >
         <Route path="browse" element={<Browse/>}/>
       </Route>
-      <Route path="about" element={<About/>}/>
+      <Route path="about" element={<About/>}/> */}
     </Route>
   )
 )
